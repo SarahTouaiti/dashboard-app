@@ -47,7 +47,7 @@ const Team = () => {
             p="5px"
             display="flex"
             justifyContent="center"
-            w
+            alignItems="center"
             backgroundColor={
               access === "admin"
                 ? colors.greenAccent[600]
@@ -80,6 +80,9 @@ const Team = () => {
           },
           "& .MuiDataGrid-cell": {
             borderBottom: "none",
+            display: "flex", // make cell itself a flex container
+            alignItems: "center", // vertically center content
+            justifyContent: "center", // horizontally center content
           },
           "& .name-column--cell": {
             color: colors.greenAccent[300],
