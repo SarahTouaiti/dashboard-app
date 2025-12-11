@@ -55,9 +55,6 @@ const Invoices = () => {
           },
           "& .MuiDataGrid-cell": {
             borderBottom: "none",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
           },
           "& .name-column--cell": {
             color: colors.greenAccent[300],
