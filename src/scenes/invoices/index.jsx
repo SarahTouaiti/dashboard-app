@@ -1,5 +1,5 @@
 import { Box, Typography, useTheme } from "@mui/material";
-import { DataGrid, GridToolbar } from "@mui/x-data-grid";
+import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import { mockDataInvoices } from "../../data/mockData";
 import Header from "../../components/Header";
@@ -16,6 +16,11 @@ const Invoices = () => {
       cellClassName: "name-column--cell",
     },
     {
+      field: "phone",
+      headerName: "Phone Number",
+      flex: 1,
+    },
+    {
       field: "email",
       headerName: "Email",
       flex: 1,
@@ -24,18 +29,21 @@ const Invoices = () => {
       field: "cost",
       headerName: "Cost",
       flex: 1,
-      renderCell: (param) => {
-        return (
+      renderCell: (params) => (
+        <Box
+          sx={{
+            width: "100%",
+            height: "100%",
+            display: "flex",
+            alignItems: "center", // vertical center
+            justifyContent: "flex-start", // optional: horizontal alignment
+          }}
+        >
           <Typography color={colors.greenAccent[500]}>
-            ${param.row.cost}
+            ${params.row.cost}
           </Typography>
-        );
-      },
-    },
-    {
-      field: "phone",
-      headerName: "Phone Number",
-      flex: 1,
+        </Box>
+      ),
     },
     {
       field: "date",
@@ -43,6 +51,7 @@ const Invoices = () => {
       flex: 1,
     },
   ];
+
   return (
     <Box m="20px">
       <Header title="INVOICES" subtitle="List of Invoice Balances" />
@@ -75,11 +84,7 @@ const Invoices = () => {
           },
         }}
       >
-        <DataGrid
-          rows={mockDataInvoices}
-          columns={columns}
-          components={{ Toolbar: GridToolbar }}
-        />
+        <DataGrid checkboxSelection rows={mockDataInvoices} columns={columns} />
       </Box>
     </Box>
   );
