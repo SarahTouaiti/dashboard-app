@@ -26,6 +26,7 @@ const Layout = () => {
               ? "translateX(0)"
               : "translateX(-100%)"
             : "translateX(0)",
+          width: isMobile ? 250 : 250,
         }}
       >
         <Sidebar isSidebar={isSidebarOpen} />
@@ -37,14 +38,13 @@ const Layout = () => {
         display="flex"
         flexDirection="column"
         overflow="auto"
-        ml={!isMobile && isSidebarOpen ? "250px" : 0} // shifts content on desktop when sidebar open
+        ml={!isMobile && isSidebarOpen ? "250px" : 0} // shifts content for desktop
       >
         <Topbar setIsSidebar={setIsSidebarOpen} isMobile={isMobile} />
         <Box
           p={{ xs: 1, sm: 2, md: 3 }}
           sx={{
-            // Reduce content width on mobile
-            maxWidth: isMobile ? "100%" : "100%",
+            maxWidth: "100%",
             width: "100%",
           }}
         >
